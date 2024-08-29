@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const clothingItemsContainer = document.getElementById('clothing-items');
 
     const fetchClothingItems = async (query = '') => {
-        const url = "http://localhost:4040";
+        const url = "https://zimeshare-v9rt.onrender.com";
         try {
             const response = await fetch(`${url}/search/search?q=${encodeURIComponent(query)}`);
             const items = await response.json();
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     <!-- Image Section -->
                     <div class="flex-1 w-full bg-cover bg-center overflow-hidden">
-                        <img src="http://localhost:4040/assets${item.image}" alt="${item.name}" class="w-full h-full object-cover"/>
+                        <img src="https://zimeshare-v9rt.onrender.com/assets${item.image}" alt="${item.name}" class="w-full h-full object-cover"/>
                     </div>
                     
                     <!-- Price Section -->
