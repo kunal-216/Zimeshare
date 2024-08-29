@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zimeshare Assignment</title>
+    <link href="dist/styles.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@^2.2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <nav class="flex flex-row justify-between items-center bg-blue-500 w-full h-[60px] p-4 sticky top-0 z-50">
+        <div class="text-white text-lg font-semibold">
+            <p class="text-2xl">Zimeshare</p>
+        </div>
+        <div class="hidden md:block ml-20">
+            <ul class="flex space-x-4 ml-12">
+                <li><a href="#" class="text-white hover:text-gray-200">Home</a></li>
+                <li><a href="#" class="text-white hover:text-gray-200">About</a></li>
+                <li><a href="#" class="text-white hover:text-gray-200">Contact</a></li>
+            </ul>
+        </div>        
+        <div>
+            <input type="text" id="search" class="border-black outline-none rounded-md text-gray-800 px-3 py-1 w-[200px] lg:w-[350px] md:w-[300px] sm:w-[250px] " placeholder="Search here">
+        </div>
+    </nav>
+
+    <main id="clothing-items" class="min-h-screen w-full p-8 bg-[#F0F4F8] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        
+    </main>
+
+    <footer class="bg-blue-500 text-white py-4 border-t border-gray-700">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-lg">
+                &copy; 2024 Zimeshare. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
