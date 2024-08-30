@@ -7,6 +7,7 @@ The Zimeshare Internship Program project is a dynamic single-page application fo
 ## Features
 
 - **Single-Page Application**: The entire functionality is contained within a single home page.
+![Home Page](../frontend/assets/HomePage.jpeg)
 - **Dynamic Search Bar**: As the user types in the search bar, relevant products such as Airdopes, Earphones, Mobile, TV, Refrigerator, Mouse, Camera, and Speakers are displayed dynamically.
 - **Real-Time Search Results**: The search results are updated in real-time once the user inputs at least three characters.
 
