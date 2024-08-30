@@ -11,6 +11,18 @@ The Zimeshare Internship Program project is a dynamic single-page application fo
 - **Dynamic Search Bar**: As the user types in the search bar, relevant products such as Airdopes, Earphones, Mobile, TV, Refrigerator, Mouse, Camera, and Speakers are displayed dynamically.
 - **Real-Time Search Results**: The search results are updated in real-time once the user inputs at least three characters.
 
+## Accessories
+The following accessories are available in the e-commerce website:
+
+- **Airdopes**
+- **Earphones**
+- **Mobile**
+- **TV**
+- **Refrigerator**
+- **Mouse**
+- **Camera**
+- **Speakers**
+
 ![Dynamic Search Page by Searching Cam](frontend/assets/CameraSearch.jpeg)
 ![Dynamic Search Page by Searching air](frontend/assets/AirdopesSearch.jpeg)
 
