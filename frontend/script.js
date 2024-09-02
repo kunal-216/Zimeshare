@@ -1,20 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('search');
     const clothingItemsContainer = document.getElementById('clothing-items');
-    let items = []; 
 
-    const fetchClothingItems = async () => {
+    const fetchAndDisplayItems = async (query = '') => {
         const url = "http://localhost:4040";
         try {
-            const response = await fetch(`${url}/search/search`); 
-            items = await response.json();
-            displayItems(items); 
+            const response = await fetch(`${url}/search/search?q=${encodeURIComponent(query)}`);
+            const itemsToDisplay = await response.json();
+            displayItems(itemsToDisplay);
         } catch (error) {
             console.error('Error fetching items:', error);
+            clothingItemsContainer.innerHTML = '<p>Error fetching items.</p>';
         }
     };
 
     const displayItems = (itemsToDisplay) => {
+        if (itemsToDisplay.length === 0) {
+            clothingItemsContainer.innerHTML = '<p>No items found.</p>';
+            return;
+        }
+
         clothingItemsContainer.innerHTML = itemsToDisplay.map(item => {
             const price = parseFloat(item.price.replace('$', '')) || 0;
             return `
@@ -33,30 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }).join('');
     };
 
-    const matchesThreeConsecutiveLetters = (query, itemName) => {
-        query = query.toLowerCase();
-        itemName = itemName.toLowerCase();
-
-        if (query.length < 3) return false;
-
-        for (let i = 0; i <= query.length - 3; i++) {
-            const querySubstring = query.substring(i, i + 3);
-            if (itemName.includes(querySubstring)) {
-                return true;
-            }
-        }
-        return false;
-    };
-
     searchInput.addEventListener('input', () => {
-        const query = searchInput.value;
-        if (query.length >= 3) {
-            const filteredItems = items.filter(item => matchesThreeConsecutiveLetters(query, item.name));
-            displayItems(filteredItems);
-        } else {
-            displayItems(items); 
-        }
+        const query = searchInput.value.trim();
+        fetchAndDisplayItems(query);
     });
 
-    fetchClothingItems(); 
+    // Fetch all items initially when the page loads
+    fetchAndDisplayItems();
 });

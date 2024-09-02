@@ -1,24 +1,41 @@
 import express from 'express';
 import ClothingItem from '../models/clothingItem.js';
+import Fuse from "fuse.js";
 
 const router = express.Router();
 
-router.get('/items', async (req, res) => {
+const fetchAllItems = async () => {
     try {
         const items = await ClothingItem.find({});
-        res.json(items);
+        return items;
     } catch (error) {
-        res.status(500).json({ message: 'Error fetching items', error });
+        console.error('Error fetching items:', error);
+        return [];
     }
-});
+};
 
 router.get('/search', async (req, res) => {
     const query = req.query.q || '';
+
     try {
-        const items = await ClothingItem.find({
-            name: { $regex: query, $options: 'i' }
-        });
-        res.json(items);
+        if (query.length < 3) {
+            const allItems = await fetchAllItems();
+            return res.json(allItems);
+        }
+
+        const items = await fetchAllItems();
+        const options = {
+            includeScore: true,
+            keys: ['name'],
+            threshold: 0.4,
+            distance: 200, 
+        };
+        
+        const fuse = new Fuse(items, options);
+        const result = fuse.search(query);
+
+        const matchedItems = result.map(resultItem => resultItem.item);
+        res.json(matchedItems);
     } catch (error) {
         res.status(500).json({ message: 'Error searching items', error });
     }
